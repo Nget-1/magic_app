@@ -14,10 +14,13 @@ class MainActivity : AppCompatActivity() {
         val cardEntry = findViewById<EditText>(R.id.card_entry)
         val addCardButton = findViewById<Button>(R.id.card_entry_button)
 
+        val userCardList = mutableListOf<String>()
+
         addCardButton.setOnClickListener{
             val newCard = cardEntry.text.toString()
             if(!newCard.isNullOrEmpty()){
-                cardList.text = newCard
+                userCardList.add(0, newCard)
+                cardList.text = userCardList.joinToString(separator = "\n\n")
                 cardEntry.setText("")
             }
         }
